@@ -1,0 +1,65 @@
+components:
+  schemas:
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the transaction
+        amount:
+          type: number
+          description: Amount of the transaction
+        currency:
+          type: string
+          description: Currency of the transaction
+        date:
+          type: string
+          format: date-time
+          description: Date and time of the transaction
+        status:
+          type: string
+          description: Status of the transaction
+        description:
+          type: string
+          description: Description of the transaction
+
+    BaseQuery:
+      type: object
+      properties:
+        sortBy:
+          type: string
+          description: Field to sort by
+        order:
+          type: string
+          enum: [asc, desc]
+          description: Order of sorting
+        page:
+          type: integer
+          description: Page number
+        limit:
+          type: integer
+          description: Number of items per page
+        filter:
+          type: string
+          description: Filter criteria
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error message
+
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 404
+            message: Not found

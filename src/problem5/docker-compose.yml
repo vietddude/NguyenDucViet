@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  transaction-api:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - txn-mongodb
+    networks:
+      - base-network
+    env_file:
+      - .env
+    command: npm start
+
+  txn-mongodb:
+    image: mongo:7.0.7
+    container_name: txn-mongodb
+    ports:
+      - 27017:27017
+    environment:
+      # - MONGO_INITDB_DATABASE=transaction-db
+      # - MONGO_INITDB_ROOT_USERNAME=viet
+      # - MONGO_INITDB_ROOT_PASSWORD=123
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - ./mongodb:/data/db
+    networks:
+      - base-network
+
+networks:
+  base-network:
+    name: base-network
