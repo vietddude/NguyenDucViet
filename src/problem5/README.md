@@ -61,8 +61,8 @@ problem5/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/vietddude/code-challenge.git
-cd code-challenge/problem5
+git clone https://github.com/vietddude/NguyenDucViet.git
+cd NguyenDucViet/problem5
 ```
 
 ### 2. Install dependencies
